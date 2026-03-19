@@ -1,0 +1,16 @@
+# Ambienti Virtuali e Cache Python
+venv/
+__pycache__/
+*.pyc
+.env
+
+# Dipendenze Frontend
+frontend/node_modules/
+frontend/dist/
+
+# Database Vettoriale e File Locali
+chroma_db/
+*.sqlite3
+
+# OS Files
+.DS_Store
