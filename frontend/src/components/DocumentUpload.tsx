@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { uploadDocument } from '../api';
-import { UploadCloud, CheckCircle, FileText } from 'lucide-react';
+import { UploadCloud, CheckCircle } from 'lucide-react';
 
 export const DocumentUpload: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);

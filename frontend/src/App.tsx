@@ -1,4 +1,3 @@
-import React from 'react';
 import { ChatInterface } from './components/ChatInterface';
 import { DocumentUpload } from './components/DocumentUpload';
 import { Map } from 'lucide-react';

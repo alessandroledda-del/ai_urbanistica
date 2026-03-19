@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { sendMessage, type ChatResponse } from '../api';
-import { Send, Book, AlertCircle } from 'lucide-react';
+import { Send, Book } from 'lucide-react';
 
 interface Message {
   id: string;
