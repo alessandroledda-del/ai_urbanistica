@@ -1,6 +1,6 @@
 from fastapi import APIRouter, UploadFile, File, Form, HTTPException
 from typing import Optional
-# from core.ingestion import process_and_ingest_file
+from core.ingestion import process_and_ingest_file
 
 router = APIRouter()
 
@@ -28,6 +28,8 @@ async def ingest_document(
         "filename": file.filename
     }
     
-    # success = await process_and_ingest_file(file, metadata)
-    # return {"message": f"Documento {file.filename} ingerito con successo."}
-    return {"message": f"Endpoint mock: Documento {file.filename} ricevuto con metadata {metadata}."}
+    success = await process_and_ingest_file(file, metadata)
+    if success:
+        return {"message": f"Documento {file.filename} analizzato e ingerito nel database con successo."}
+    else:
+        raise HTTPException(status_code=500, detail="Errore nell'ingestion del documento.")
