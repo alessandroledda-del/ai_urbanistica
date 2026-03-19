@@ -10,13 +10,13 @@ export interface ChatResponse {
   sources: ChatSource[];
 }
 
-export const sendMessage = async (question: string): Promise<ChatResponse> => {
+export const sendMessage = async (question: string, useInternet: boolean = false): Promise<ChatResponse> => {
   const response = await fetch(`${API_URL}/chat`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ question }),
+    body: JSON.stringify({ question, use_internet: useInternet }),
   });
   
   if (!response.ok) {

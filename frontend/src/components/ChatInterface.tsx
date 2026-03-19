@@ -19,6 +19,7 @@ export const ChatInterface: React.FC = () => {
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [useInternet, setUseInternet] = useState(false);
 
   const handleSend = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,7 +31,7 @@ export const ChatInterface: React.FC = () => {
     setIsLoading(true);
 
     try {
-      const response: ChatResponse = await sendMessage(input);
+      const response: ChatResponse = await sendMessage(input, useInternet);
       const aiMsg: Message = {
         id: (Date.now() + 1).toString(),
         role: 'ai',
@@ -110,6 +111,10 @@ export const ChatInterface: React.FC = () => {
       </div>
 
       <div className="input-area">
+        <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', marginBottom: '16px', justifyContent: 'center', fontSize: '13px' }} className="text-muted">
+          <input type="checkbox" checked={useInternet} onChange={(e) => setUseInternet(e.target.checked)} style={{ width: 'auto', padding: 0 }} />
+          🌐 Cerca su Internet oltre ai PDF locali
+        </label>
         <form className="input-wrapper" onSubmit={handleSend}>
           <input 
             type="text" 
